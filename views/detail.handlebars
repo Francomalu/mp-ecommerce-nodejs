@@ -1,4 +1,4 @@
-
+<script src="https://sdk.mercadopago.com/js/v2"></script>
 <div class="as-search-wrapper" role="main">
     <div class="as-navtuck-wrapper">
         <div class="as-l-fullwidth  as-navtuck" data-events="event52">
@@ -16,7 +16,8 @@
             </div>
         </div>
     </div>
-    <div class="as-search-results as-filter-open as-category-landing as-desktop" id="as-search-results">
+    <section class="shopping-cart">
+        <div class="as-search-results as-filter-open as-category-landing as-desktop" id="as-search-results">
 
         <div id="accessories-tab" class="as-accessories-details">
             <div class="as-accessories" id="as-accessories">
@@ -54,7 +55,7 @@
                                     <div class="clearfix image-list xs-no-js as-util-relatedlink relatedlink" data-relatedlink="6|Powerbeats3 Wireless Earphones - Neighborhood Collection - Brick Red|MPXP2">
                                         <div class="as-tilegallery-element as-image-selected">
                                             <div class=""></div>
-                                            <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url({{ img }}) 2x);">
+                                            <img src="./assets/003.jpg" id="imgURL"class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url({{ img }}) 2x);">
                                         </div>
                                         
                                     </div>
@@ -67,29 +68,34 @@
                             </div>
 
                         </div>
-                        <div class="as-producttile-info" style="float:left;min-height: 168px;">
-                            <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
-                                <div class="as-producttile-title">
-                                    <h3 class="as-producttile-name">
-                                        <p class="as-producttile-tilelink">
-                                            <span data-ase-truncate="2"> {{ title }} </span>
-                                        </p>
-
-                                    </h3>
-                                </div>
-                                <h3 >
-                                    {{ price }}
-                                </h3>
-                                <h3 >
-                                    {{ unit }}
-                                </h3>
-                            </div>
-                            <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
-                        </div>
+                       <form action="/create_preference?price={{price}}&quantity={{unit}}&name={{
+                            title
+                        }}&img={{img}}" class="as-producttile-info" style="float:left;min-height: 168px;">
+                            <div class="as-producttile-info" style="float:left;min-height: 168px;">
+                                    <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
+                                        <div class="as-producttile-title">
+                                            <h3 class="as-producttile-name">
+                                                <p class="as-producttile-tilelink">
+                                                    <span data-ase-truncate="2" id="title_id"> {{ title }} </span>
+                                                </p>
+                                            </h3>
+                                        </div>
+                                        <h3>
+                                            <span id="price_id">{{ price }}</span>
+                                        </h3>
+                                        <h3>
+                                            <span id="unit_id"> {{ unit }}</span>
+                                        </h3>
+                                    </div>
+                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar la compra</button>
+                            </div>                  
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+    </section>
 </div>
-   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="/views/js/index.js"></script>
