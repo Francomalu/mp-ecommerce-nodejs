@@ -63,6 +63,7 @@ app.post('/create_preference',(req,res)=>{
 			failure: "https://francomalu-mp-ecommerce-nodejs.herokuapp.com/feedback",
 			pending: "https://francomalu-mp-ecommerce-nodejs.herokuapp.com/feedback"
 		},
+		notification_url:"https://francomalu-mp-ecommerce-nodejs.herokuapp.com/webhook",
 		auto_return: "approved",
 		payment_methods: {
 			excluded_payment_methods: [
@@ -72,7 +73,6 @@ app.post('/create_preference',(req,res)=>{
 			],
 			installments: 6
 		},
-		notification_url:"https://francomalu-mp-ecommerce-nodejs.herokuapp.com/webhook",
 		external_reference: "franco.m.2@hotmail.es"
 	};
 	
@@ -84,6 +84,7 @@ app.post('/create_preference',(req,res)=>{
 
 app.post("/webhook", (req,res)=>{
 	console.log(req)
+	console.log("notificacion!!!")
 })
 
 app.get("/feedback",(req,res)=>{
