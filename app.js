@@ -59,9 +59,9 @@ app.post('/create_preference',(req,res)=>{
 			}
 		},
 		back_urls: {
-			success: "http://localhost:3000/feedback",
-			failure: "http://localhost:3000/feedback",
-			pending: "http://localhost:3000/feedback"
+			success: "https://francomalu-mp-ecommerce-nodejs.herokuapp.com/feedback",
+			failure: "https://francomalu-mp-ecommerce-nodejs.herokuapp.com/feedback",
+			pending: "https://francomalu-mp-ecommerce-nodejs.herokuapp.com/feedback"
 		},
 		auto_return: "approved",
 		payment_methods: {
