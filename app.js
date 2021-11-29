@@ -72,6 +72,7 @@ app.post('/create_preference',(req,res)=>{
 			],
 			installments: 6
 		},
+		notification_url:"https://francomalu-mp-ecommerce-nodejs.herokuapp.com/webhook",
 		external_reference: "franco.m.2@hotmail.es"
 	};
 	
@@ -80,6 +81,10 @@ app.post('/create_preference',(req,res)=>{
             res.redirect(response.body.init_point)
         });
 });
+
+app.post("/webhook", (req,res)=>{
+	console.log(req)
+})
 
 app.get("/feedback",(req,res)=>{
 	res.render('feedback',req.query)
