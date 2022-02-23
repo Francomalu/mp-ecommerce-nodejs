@@ -83,17 +83,7 @@ app.post('/create_preference',(req,res)=>{
 });
 
 app.post("/webhook", (req,res)=>{
-	if (req.method == "POST") {
-		let body = "";
-		req.on("data", chunk => {
-		  body += chunk.toString();
-		});
-		req.on("end", () => {
-		  console.log(body, "webhook response");
-		  res.end("ok");
-		});
-	  }
-	  return res.status(201);
+	console.log(res, req)
 })
 
 app.get("/feedback",(req,res)=>{
