@@ -104,8 +104,8 @@ app.post("/webhook", (req,res)=>{
 	let body = "";
       req.on("data", (data) => {
         body += data;
-		console.log(body);
       });
+	console.log(body);
 	return res.status(200)
 })
 
