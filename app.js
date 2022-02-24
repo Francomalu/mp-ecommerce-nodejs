@@ -83,7 +83,7 @@ app.post('/create_preference',(req,res)=>{
 });
 
 app.post("/webhook", (req,res)=>{
-	console.log(res, req)
+	console.log('hola')
 })
 
 app.get("/feedback",(req,res)=>{
