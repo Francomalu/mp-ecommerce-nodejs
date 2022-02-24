@@ -40,7 +40,7 @@ app.post('/create_preference', async(req,res)=>{
 			{
                 id: 1234,
 				title: req.query.name,
-                descripcion: "Dispositivo móvil de Tienda e-commerce",
+                description: "Dispositivo móvil de Tienda e-commerce",
 				unit_price: Number(req.query.price),
 				quantity: Number(req.query.quantity),
 				picture_url: urlImage
@@ -100,7 +100,7 @@ app.post('/create_preference', async(req,res)=>{
 });
 
 app.post("/webhook", (req,res)=>{
-	console.log(req.body)
+	console.log(req.query)
 	return res.status(200)
 })
 
