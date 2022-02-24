@@ -29,7 +29,7 @@ app.get('/detail', function (req, res) {
 });
 
 app.post('/create_preference',(req,res)=>{
-    
+    console.log('crear preferencia')
     let preference = {
 		items: [
 			{
