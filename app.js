@@ -40,7 +40,7 @@ app.post('/create_preference', async(req,res)=>{
 			{
                 id: 1234,
 				title: req.query.name,
-                descripcion: "Dispositivo móvil de Tienda e-commerce",
+                description: "Dispositivo móvil de Tienda e-commerce",
 				unit_price: Number(req.query.price),
 				quantity: Number(req.query.quantity),
 				picture_url: urlImage
@@ -100,11 +100,15 @@ app.post('/create_preference', async(req,res)=>{
 });
 
 app.post("/webhook", (req,res)=>{
+<<<<<<< HEAD
 	let body = "";
       req.on("data", chunk => {
         body += chunk.toString();
       });
 	console.log(body)
+=======
+	console.log(req.query)
+>>>>>>> 8dc2addf3810e8b93bfef9200560ca893d37b838
 	return res.status(200)
 })
 
