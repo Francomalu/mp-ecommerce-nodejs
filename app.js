@@ -100,7 +100,11 @@ app.post('/create_preference', async(req,res)=>{
 });
 
 app.post("/webhook", (req,res)=>{
-	console.log(req.body)
+	let body = "";
+      req.on("data", chunk => {
+        body += chunk.toString();
+      });
+	console.log(body)
 	return res.status(200)
 })
 
