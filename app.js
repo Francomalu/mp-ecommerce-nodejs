@@ -29,7 +29,6 @@ app.get('/detail', function (req, res) {
 });
 
 app.post('/create_preference',(req,res)=>{
-    console.log('crear preferencia')
     let preference = {
 		items: [
 			{
@@ -83,7 +82,7 @@ app.post('/create_preference',(req,res)=>{
 });
 
 app.post("/webhook", (req,res)=>{
-	console.log('hola')
+	console.log(req.body)
 })
 
 app.get("/feedback",(req,res)=>{
