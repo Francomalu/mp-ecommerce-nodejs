@@ -100,15 +100,12 @@ app.post('/create_preference', async(req,res)=>{
 });
 
 app.post("/webhook", (req,res)=>{
-<<<<<<< HEAD
+
 	let body = "";
       req.on("data", chunk => {
         body += chunk.toString();
       });
-	console.log(body)
-=======
-	console.log(req.query)
->>>>>>> 8dc2addf3810e8b93bfef9200560ca893d37b838
+	console.log(body);
 	return res.status(200)
 })
 
