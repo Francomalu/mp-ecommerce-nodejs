@@ -1,18 +1,11 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
-const mercadopago = require('mercadopago');
+
 const axios = require("axios");
 
-const token = 'APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398';
-
-
-mercadopago.configure({
-	access_token: token
-});
-
-var port = process.env.PORT || 3001
-
 var app = express();
+
+const token = 'APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398';
 
 const PaymentController = require("./controllers/PaymentController");
 const PaymentInstance = new PaymentController();
@@ -21,17 +14,13 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static('assets'));
- 
-app.use('/assets', express.static(__dirname + '/assets'));
-app.use('/views', express.static(__dirname + '/views'));
 
 app.get('/', function (req, res) {
-    res.render('home');
+	res.render('home');
 });
 
 app.get('/detail', function (req, res) {
-    res.render('detail', req.query);
+	res.render('detail', req.query);
 });
 
 app.post('/create_preference', async(req,res)=>{
@@ -41,7 +30,7 @@ app.post('/create_preference', async(req,res)=>{
     let preference = {
 		items: [
 			{
-                id: 1234,
+				id: 1234,
 				title: req.query.name,
                 description: "Dispositivo móvil de Tienda e-commerce",
 				unit_price: Number(req.query.price),
@@ -91,15 +80,15 @@ app.post('/create_preference', async(req,res)=>{
 	};
 	try {
 		const request = await axios.post(`https://api.mercadopago.com/checkout/preferences?access_token=${token}`, preference, {
-		  headers: {
-			"Content-Type": "application/json",
-			"x-integrator-id": "dev_24c65fb163bf11ea96500242ac130004"
-		  }
+			headers: {
+				"Content-Type": "application/json",
+				"x-integrator-id": "dev_24c65fb163bf11ea96500242ac130004"
+			}
 		});
 		res.redirect(request.data.init_point)
-	  } catch (e) {
+	} catch (e) {
 		console.log(e);
-	  }
+	}
 });
 
 app.post("/webhook", (req,res) => PaymentInstance.webhook(req,res));
@@ -108,4 +97,9 @@ app.get("/feedback",(req,res)=>{
 	res.render('feedback',req.query)
 })
 
-app.listen(port);
+app.use(express.static('assets'));
+ 
+app.use('/assets', express.static(__dirname + '/assets'));
+app.use('/views', express.static(__dirname + '/views'));
+
+app.listen(process.env.PORT || 3000);
