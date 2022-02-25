@@ -91,14 +91,14 @@ app.post('/create_preference', async(req,res)=>{
 	}
 });
 
-app.post("/webhook", (req,res) => PaymentInstance.webhook(req,res));
 
 app.get("/feedback",(req,res)=>{
 	res.render('feedback',req.query)
 })
 
+app.post("/webhook", (req,res) => PaymentInstance.webhook(req,res));
+
 app.use(express.static('assets'));
- 
 app.use('/assets', express.static(__dirname + '/assets'));
 app.use('/views', express.static(__dirname + '/views'));
 
