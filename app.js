@@ -13,6 +13,9 @@ mercadopago.configure({
 var port = process.env.PORT || 3001
 
 var app = express();
+
+const PaymentController = require("./controllers/PaymentController");
+const PaymentInstance = new PaymentController();
  
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
@@ -99,19 +102,7 @@ app.post('/create_preference', async(req,res)=>{
 	  }
 });
 
-app.post("/webhook", async(req,res)=>{
-	if (req.method === "POST") {
-		let body = "";
-		req.on("data", chunk => {
-		  body += chunk.toString();
-		});
-		req.on("end", () => {
-		  console.log(body, "webhook response");
-		  res.end("ok");
-		});
-	  }
-	  return res.status(201);
-})
+app.post("/webhook", (req,res) => PaymentInstance.webhook(req,res));
 
 app.get("/feedback",(req,res)=>{
 	res.render('feedback',req.query)
